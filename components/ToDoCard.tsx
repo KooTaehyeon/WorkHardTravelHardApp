@@ -24,7 +24,11 @@ const ToDoCard = (props: any) => {
     setEdit(!edit);
     const newToDo = {
       ...props.toDos,
-      [props.id]: { text: editText, work: props.toDos[props.id].work },
+      [props.id]: {
+        text: editText,
+        work: props.toDos[props.id].work,
+        check: props.toDos[props.id]?.check,
+      },
     };
     props.setToDos(newToDo);
   };
