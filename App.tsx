@@ -10,6 +10,7 @@ import {
   ScrollView,
   Alert,
   Button,
+  Platform,
 } from 'react-native';
 import { Fontisto } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -74,21 +75,32 @@ export default function App() {
   };
   console.log(toDos);
   const deleteToDo = (id: string) => {
-    Alert.alert('Delete To Do?', 'Are you sure', [
-      {
-        text: 'Cancel(취소)',
-      },
-      {
-        text: "I'm Sure(삭제)",
-        style: 'destructive',
-        onPress: async () => {
-          const newToDos = { ...toDos };
-          delete newToDos[id];
-          setToDos(newToDos);
-          await saveToDos(newToDos);
+    if (Platform.OS === 'web') {
+      const ok = confirm('do tou want to delete this To Do');
+      if (ok) {
+        const newToDos = { ...toDos };
+        delete newToDos[id];
+        setToDos(newToDos);
+        saveToDos(newToDos);
+      }
+    } else {
+      Alert.alert('Delete To Do?', 'Are you sure', [
+        {
+          text: 'Cancel(취소)',
         },
-      },
-    ]);
+        {
+          text: "I'm Sure(삭제)",
+          style: 'destructive',
+          onPress: async () => {
+            const newToDos = { ...toDos };
+            delete newToDos[id];
+            setToDos(newToDos);
+            await saveToDos(newToDos);
+          },
+        },
+      ]);
+    }
+
     return;
   };
   const delStorage = async () => {

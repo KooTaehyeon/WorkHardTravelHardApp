@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "WorkHardTravelHardApp",
-    "slug": "WorkHardTravelHardApp",
+    "name": "my-todo",
+    "slug": "my-todo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,23 +15,16 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.kootaehyeon.WorkHardTravelHardApp"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.kootaehyeon.WorkHardTravelHardApp"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "ea6e5dcc-6e89-487a-bb08-23ac569d4fa1"
-      }
     }
   }
 }
